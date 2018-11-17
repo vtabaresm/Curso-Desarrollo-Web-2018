@@ -1,4 +1,4 @@
-<!DOCTYPE html> <!–  ->
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -20,7 +20,7 @@
                 <span class="nav-toggle icono-grande" id="btn-nav-toggle">
                     <i class="fe fe-bar"></i>
                 </span>
-                <ul class="nav-links lista-links">
+                <ul class="nav-links lista-links" id="nav-links">
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#">Contacto</a></li>
                     <li><a href="#">Dudas</a></li>
@@ -32,7 +32,7 @@
             <span class="menu-close" id="btn-menu-close">
                 <i class="fe fe-close"></i>
             </span>
-            <ul class="menu-links lista-links">
+            <ul class="menu-links lista-links" id="menu-links">
                 <li><a href="#">Angular</a></li>
                 <li><a href="#">VueJS</a></li>
                 <li><a href="#">React</a></li>
@@ -41,11 +41,11 @@
             </ul>
         </div>
         <section class="main">
-            <div class="instruccion">
+            <div class="instruccion" id="TxtInstruccion">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea natus excepturi repudiandae possimus facilis dolorum sit cupiditate nam, aperiam repellat, temporibus odit numquam? Rerum magni totam modi hic exercitationem placeat?</p>
             </div>
             <div class="contenedor-iframe">
-                <iframe id="iframe" src="http://www.angular.io"></iframe>
+                <iframe id="iframe" name="name-iframe" src="assets/uploads/actividades/actividad-normal/index.html"></iframe>
             </div>
         </section>
         <footer class="footer">
@@ -53,6 +53,7 @@
 
         </footer>
     </div>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
