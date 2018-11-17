@@ -3,15 +3,15 @@
 
 /* Normalizar documento */
 *{
-    margin: 0; padding: 0; box-sizing: content-box;
+    margin: 0; padding: 0; box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Lato', 'Arial', sans-serif;
 }
 
 /*Definición de CSS Variables */
-:root{
+:root {
     /*Variables de colores principales*/
     --c-primario: #3CBAC8;
     --c-secundario: #93EDD4;
@@ -20,14 +20,13 @@ body{
     --c-oscuro: #F9CB8F;
     --c-masoscuro: #3CBAFA;
 
-    /*Variables de dimensiones*/
+    /*Variables de dimensiones para el iframe*/
     --iframe-width: 650px;
     --iframe-heigth: 450px;
-
 }
 
-/* ************************** Layaout de la aplicación con CSS Grid**************************** */
-.contenedor{
+/* ********************* Layaout de la aplicación con CSS Grid**************************** */
+.contenedor {
     background: var(--c-primario);
     width: 100vw;
     height: 100vh;
@@ -37,24 +36,23 @@ body{
     overflow-x: hidden;
 }
 
-.header{
+.header {
     background: var(--c-secundario);
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
 
-.menu{
+.menu {
     background: var(--c-terciario);
-    display: none;
 }
 
-.main{
+.main {
     background: var(--c-terciario);
     grid-column: 1 / 2;
     grid-row: 2 / 3;
 }
 
-.footer{
+.footer {
     background: var(--c-oscuro);
     grid-column: 1 / 2;
     grid-row: 3 / 4;
@@ -62,68 +60,199 @@ body{
 /* ******************************************************************************************** */
 
 /* Estilos para el contenido princiapal */
-.main{
+.main {
     padding: 1em;
 }
 
-.main .instruccion{
+.main .instruccion {
     width: 90%;
     margin: 0 auto;
-    border: 5px solid var(--c-claro);
+    padding: 5px solid var(--c-claro);
     border-radius: 10px;
     background: var(--c-claro);
 }
 
-.main .instruccion p{
-    margin: 0; padding: 0;
+.main .instruccion p {
+    margin: 0; 
+    padding: 0;
     text-align: center;
     font-weight: bold;
 }
 
-.main .contenedor-iframe{
+.main .contenedor-iframe {
     width: 90%;
     margin: 0 auto;
-    margin-top: 0%;
-    border: 1px solid #F9CB8F;
+    margin-top: 0.5em;
     text-align: center;
     overflow-x: auto;
+    background: #F9CB8F;
 }
 
-.main .contenedor-iframe iframe{
+.main .contenedor-iframe iframe {
     width: var(--iframe-width); 
     height: var(--iframe-heigth);
+    border: none;
 }
 
 /* Estilos para la barra de navegación */
 .nav * {
     color: var(--c-masoscuro);
 }
-.nav .nav-links li:hover{
+.nav .nav-links li {
     text-align: center;
     margin: 0 auto;
-    transition: background 0.5s;
+    transition: background-color 0.5s;
+}
+.nav .nav-links li:hover {
+    background: var(--c-claro);
 }
 
-.nav .nav-links li a{
+.nav .nav-links li a {
     display: block;
     padding: 5px;
     font-weight: bold;
 }
 
-.nav .menu-open{
+.nav .menu-open {
     display: inline-block;
     margin: 5px auto 5px 15px;
-    
 }
 
 .nav{
     position: relative;
 }
 
-.nav .nav-toggle{
+.nav .nav-toggle {
     position: absolute;
     top: 5px;
     right: 15px;
+}
+
+/*Estilos para el pie de página */
+.footer {
+    color: white;
+    font-weight: bold;
+    /*centrar contenido del footer*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para el menú lateral */
+.menu {
+    position: fixed;
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    border-right: 1px solid var(--c-claro);
+    left: -300px;
+    transition: left 0.3s ease-in-out;
+}
+.menu.mostrar {
+    left: 0;
+}
+.menu .menu-links li {
+    border-bottom: 1px solid var(--c-terciario);
+    transition: background-color 0.5s;
+}
+.menu .menu-links li:hover {
+    background: var(--c-masoscuro);
+}
+.menu .menu-links li a{
+    display: block;
+    padding: 5px 10px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.menu .menu-close {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    background: red;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* ==========> Responsive Design: Estilos para dispositivos de Escritorio <========== */
+@media screen and (min-width: 900px) {
+    /* Removemos los botones para móviles de la barra de navegación */
+    .nav .menu-open, .nav .nav-toggle {
+        display: none;
+    }
+
+    /* Adecuamos la barra de navegación y su contenido */
+    .nav .nav-links {
+        height: 50px;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .nav .nav-links li {
+        height: 80%;
+        margin: 0;
+        margin-left: 20px;
+        border: 1px solid var(--c-terciario);
+        border-radius: 10px;
+    }
+    .nav .nav-links li a {
+        height: 100%;
+        padding: 0 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Modificamos el layout de la aplicación con CSS Grid */
+    .contenedor {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: auto 1fr 50px;
+    }
+
+    .header {
+        grid-column: 1 / 3;
+        grid-row: 1 / 2;
+    }
+
+    .menu {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    }
+
+    .main {
+        grid-column: 2 / 3;
+        grid-row: 2 / 3;
+    }
+
+    .footer {
+        grid-column: 1 / 3;
+        grid-row: 3 / 4;
+    }
+
+    /* Reiniciamos ciertas propiedades del menú lateral para que cumpla con el layout */
+    .menu {
+        position: static;
+        width: auto;
+        height: auto;
+        transition: none;
+        border-top: 1px solid var(--c-terciario);
+        border-bottom: 1px solid var(--c-terciario);
+    }
+    /* Ocultamos el botón para cerrar el menú lateral */
+    .menu .menu-close {
+        display: none;
+    }
+
+    /* Restringimos el tamaño del contenido principal */
+    .main .instruccion, .main .contenedor-iframe {
+        width: var(--iframe-width);
+    }
 }
 
 /* ***************** Utilidades ***************** */
