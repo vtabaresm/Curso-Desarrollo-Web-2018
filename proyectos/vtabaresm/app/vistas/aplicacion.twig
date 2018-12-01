@@ -1,0 +1,49 @@
+{% extends "plantillas/base.twig" %}
+
+{% block titulo %}Aplicación de Repositorio{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ constant('APP_URL') }}assets/css/aplicacion.css">
+{% endblock %}
+
+{% block contenido %}
+    <div class="contenedor">
+        <header class="header">
+            <nav class="nav">
+                <span class="menu-open icono-grande" id="btn-menu-open">
+                    <i class="fe fe-list-bullet"></i>
+                </span>
+                <span class="nav-toggle icono-grande" id="btn-nav-toggle">
+                    <i class="fe fe-bar"></i>
+                </span>
+                <ul class="nav-links lista-links" id="nav-links">
+                    <li><a href="{{ path_for('inicio') }}">Inicio</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Dudas</a></li>
+                    <li><a href="#">Nueva actividad</a></li>
+                </ul>
+            </nav>
+        </header>
+        <div class="menu" id="menu-lateral" data-url="{{ path_for('aplicacion.actividades') }}">
+            <span class="menu-close" id="btn-menu-close">
+                <i class="fe fe-close"></i>
+            </span>
+            <ul class="menu-links lista-links" id="menu-links"></ul>
+        </div>
+        <section class="main">
+            <div class="instruccion">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti harum id totam atque, debitis repudiandae quia asperiores, iusto nihil ad animi non praesentium in ut magni nisi at. Earum, enim!</p>
+            </div>
+            <div class="contenedor-iframe">
+                <iframe id="iframe" name="main-iframe" src=""></iframe>
+            </div>
+        </section>
+        {% include "fragmentos/footer.twig" %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ constant('APP_URL') }}assets/js/aplicacion.js"></script>
+{% endblock %}
